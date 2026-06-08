@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Attendance Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Classroom Tool</p>
+      <h1>Student Attendance</h1>
+      <p class="subtitle">Add students, mark attendance, search records, and keep everything saved in your browser.</p>
+    </div>
+    <div class="date-card">
+      <span id="todayLabel">Today</span>
+      <strong id="todayDate"></strong>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="summary-grid" aria-label="Attendance summary">
+      <article class="summary-card">
+        <span>Total Students</span>
+        <strong id="totalCount">0</strong>
+      </article>
+      <article class="summary-card present">
+        <span>Present</span>
+        <strong id="presentCount">0</strong>
+      </article>
+      <article class="summary-card absent">
+        <span>Absent</span>
+        <strong id="absentCount">0</strong>
+      </article>
+      <article class="summary-card">
+        <span>Attendance Rate</span>
+        <strong id="attendanceRate">0%</strong>
+      </article>
+    </section>
+
+    <section class="panel add-panel" aria-labelledby="addStudentTitle">
+      <div class="panel-heading">
+        <h2 id="addStudentTitle">Add Student Record</h2>
+      </div>
+      <form id="studentForm" class="student-form">
+        <label>
+          Student Name
+          <input type="text" id="studentName" placeholder="Example: Ayesha Khan" required>
+        </label>
+        <label>
+          Roll Number
+          <input type="text" id="rollNumber" placeholder="Example: 21" required>
+        </label>
+        <label>
+          Class
+          <input type="text" id="studentClass" placeholder="Example: 10-A" required>
+        </label>
+        <button type="submit" class="primary-btn">Add Student</button>
+      </form>
+    </section>
+
+    <section class="panel controls-panel" aria-label="Search and filter controls">
+      <div class="search-box">
+        <label for="searchInput">Search Students</label>
+        <input type="search" id="searchInput" placeholder="Search by name, roll number, or class">
+      </div>
+      <div class="filter-group" role="group" aria-label="Attendance filter">
+        <button type="button" class="filter-btn active" data-filter="all">All</button>
+        <button type="button" class="filter-btn" data-filter="present">Present</button>
+        <button type="button" class="filter-btn" data-filter="absent">Absent</button>
+      </div>
+    </section>
+
+    <section class="panel table-panel" aria-labelledby="recordsTitle">
+      <div class="panel-heading table-heading">
+        <h2 id="recordsTitle">Attendance Records</h2>
+        <button type="button" id="clearAllBtn" class="danger-btn">Clear All</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Roll No.</th>
+              <th>Class</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="studentTableBody"></tbody>
+        </table>
+      </div>
+      <p id="emptyState" class="empty-state">No student records yet. Add a student to begin.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
